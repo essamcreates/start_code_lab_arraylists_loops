@@ -59,14 +59,59 @@ public class Runner {
         System.out.println("numbers: " + numbers);
 
 //        1. Print out a list of the even integers
+        for (int number : numbers){
+            if (number % 2 == 0){
+                System.out.println(number);
+            }
+        }
+
+
 //        2. Print the difference between the largest and smallest value
+        int max = Collections.max(numbers);
+        int min = Collections.min(numbers);
+        int difference = max - min;
+        System.out.println("Difference: " + difference);
+
+
 //        3. Print True if the list contains a 1 next to a 1 somewhere.
+
+        boolean sameNumber = false;
+        for (int i = 0; i < numbers.size(); i++){
+            if (numbers.get(i) == 1 && numbers.get(i + 1) == 1){
+                sameNumber = true;
+                break;
+            }
+        }
+        System.out.println("Same number: " + sameNumber);
+
+
 //        4. Print the sum of the numbers,
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        System.out.println("Sum: " + sum);
+
+
 //        5. Print the sum of the numbers...
 //           ...except the number 13 is unlucky, so it does not count...
 //           ...and numbers that come immediately after a 13 also do not count.
 //
 //          So [2, 7, 13, 2] would have sum of 9.
+
+        int sumWithoutUnluckyNumbers = 0;
+        boolean skipNextNumber = false;
+        for (int number : numbers){
+            if (number == 13){
+                skipNextNumber = true;
+                continue;
+            }
+            if (!skipNextNumber) {
+                sumWithoutUnluckyNumbers += number;
+            }
+            skipNextNumber = false;
+        }
+        System.out.println("Sum without unlucky numbers: " + sumWithoutUnluckyNumbers);
 
     }
 
